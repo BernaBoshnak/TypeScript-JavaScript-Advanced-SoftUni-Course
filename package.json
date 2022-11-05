@@ -1,0 +1,26 @@
+{
+  "name": "advanced",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc",
+    "prettier": "prettier --ignore-path .gitignore \"**/*.*(js|json|ts)\"",
+    "format": "npm run prettier -- --write",
+    "check-format": "npm run prettier -- --list-different",
+    "ts-lint": "eslint . --ext .ts",
+    "ts-validate": "tsc --noEmit",
+    "validate": "npm-run-all --parallel check-format ts-lint ts-validate"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^18.7.19",
+    "@typescript-eslint/eslint-plugin": "^5.36.2",
+    "@typescript-eslint/parser": "^5.36.2",
+    "npm-run-all": "^4.1.5",
+    "prettier": "^2.7.1",
+    "typescript": "^4.8.3"
+  }
+}
