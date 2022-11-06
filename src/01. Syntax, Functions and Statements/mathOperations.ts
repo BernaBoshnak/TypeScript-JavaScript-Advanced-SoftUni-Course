@@ -1,5 +1,5 @@
 type Argument = number
-type Operator = string
+type Operator = '+' | '-' | '*' | '/' | '%' | '**'
 
 function mathOperations(
   firstNum: Argument,
