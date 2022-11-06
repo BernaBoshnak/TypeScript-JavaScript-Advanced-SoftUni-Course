@@ -1,8 +1,8 @@
-function circleArea(radius: string | number) {
-  const inputType = typeof radius
+function circleArea(input: string | number) {
+  const inputType = typeof input
 
   if (inputType === 'number') {
-    const area = Number(radius) ** 2 * Math.PI
+    const area = Math.pow(Number(input), 2) * Math.PI
     console.log(area.toFixed(2))
   } else {
     console.log(
