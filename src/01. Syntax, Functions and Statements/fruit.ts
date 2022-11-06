@@ -13,4 +13,4 @@ function fruit(fruit: Fruit, weight: Weight, price: Price) {
 
 console.log(fruit('orange', 2500, 1.8))
 
-// export {}
+export {}
