@@ -1,16 +1,21 @@
-const btn = document.querySelector('.btn') as HTMLButtonElement
-btn.addEventListener('click', report)
+type Nullable<T> = T | null
 
-function report() {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function generateReport() {
   type ReportName = string
   type TextContent = string
   type Reports = Record<ReportName, TextContent>
 
-  const checkbox = document.querySelectorAll(
-    'thead>tr>th>input',
-  ) as NodeListOf<HTMLInputElement>
-  const rows = document.querySelectorAll('tbody>tr') as NodeListOf<HTMLElement>
-  const generate = document.getElementById('output') as HTMLTextAreaElement
+  const checkbox =
+    document.querySelectorAll<HTMLInputElement>('thead>tr>th>input')
+  const rows = document.querySelectorAll<HTMLTableRowElement>('tbody>tr')
+  const textArea = document.getElementById(
+    'output',
+  ) as Nullable<HTMLTextAreaElement>
+
+  if (!textArea) {
+    return
+  }
 
   const output: Reports[] = []
 
@@ -33,7 +38,7 @@ function report() {
     output.push(reports)
   }
 
-  generate.value = JSON.stringify(output, null, 2)
+  textArea.value = JSON.stringify(output, null, 2)
 }
 
 export {}
