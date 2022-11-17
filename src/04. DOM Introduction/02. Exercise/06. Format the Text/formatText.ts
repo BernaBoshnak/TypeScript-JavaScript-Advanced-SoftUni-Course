@@ -1,12 +1,18 @@
-const btn = document.getElementById('formatBtn') as HTMLButtonElement
-btn.addEventListener('click', formatText)
-
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function formatText() {
-  const textArea = (document.querySelector('#input') as HTMLTextAreaElement)
-    .value
-  const output = document.querySelector('#output') as HTMLDivElement
+  const textArea = document.querySelector<HTMLTextAreaElement>('#input')
 
-  const input = textArea.split('.').filter((p) => p.length > 0)
+  if (!textArea) {
+    return
+  }
+
+  const output = document.querySelector<HTMLDivElement>('#output')
+
+  if (!output) {
+    return
+  }
+
+  const input = textArea.value.split('.').filter((p) => p.length > 0)
 
   for (let i = 0; i < input.length; i += 3) {
     const arr: string[] = []

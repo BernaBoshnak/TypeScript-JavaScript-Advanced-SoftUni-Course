@@ -1,19 +1,31 @@
-const btn = document.getElementById('searchBtn') as HTMLButtonElement
-btn.addEventListener('click', onClick)
-const rows = Array.from(
-  document.querySelectorAll('tbody tr') as NodeListOf<HTMLElement>,
-)
+type Nullable<T> = T | null
 
-function onClick() {
-  const input = (
-    document.querySelector('#searchField') as HTMLInputElement
-  ).value.toLowerCase()
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function solve() {
+  const input = document.querySelector<HTMLInputElement>('#searchField')
 
-  for (const row of rows) {
-    if (row.textContent?.toLowerCase().includes(input)) {
-      row.setAttribute('class', 'select')
-    } else {
-      row.removeAttribute('class')
+  if (!input) {
+    return
+  }
+
+  const rows = Array.from(
+    document.querySelectorAll<HTMLTableRowElement>('tbody tr'),
+  )
+  const btn = document.getElementById(
+    'searchBtn',
+  ) as Nullable<HTMLButtonElement>
+  btn?.addEventListener('click', onClick)
+
+  function onClick() {
+    for (const row of rows) {
+      if (
+        input &&
+        row.textContent?.toLowerCase().includes(input.value.toLowerCase())
+      ) {
+        row.setAttribute('class', 'select')
+      } else {
+        row.removeAttribute('class')
+      }
     }
   }
 }
