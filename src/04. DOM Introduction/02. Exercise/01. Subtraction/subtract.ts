@@ -1,13 +1,23 @@
-const firstNumber = Number(
-  (document.getElementById('firstNumber') as HTMLInputElement).value,
-)
-const secondNumber = Number(
-  (document.getElementById('secondNumber') as HTMLInputElement).value,
-)
-const resultId = document.getElementById('result') as HTMLDivElement
+type Nullable<T> = T | null
 
-const result = firstNumber - secondNumber
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function subtract() {
+  const firstNumber = document.getElementById(
+    'firstNumber',
+  ) as Nullable<HTMLInputElement>
 
-resultId.textContent = result.toString()
+  const secondNumber = document.getElementById(
+    'secondNumber',
+  ) as Nullable<HTMLInputElement>
+  const resultId = document.getElementById('result') as Nullable<HTMLDivElement>
+
+  if (!resultId) {
+    return
+  }
+
+  const result = Number(firstNumber?.value) - Number(secondNumber?.value)
+
+  resultId.textContent = result.toString()
+}
 
 export {}
