@@ -1,16 +1,20 @@
-const btn = document.getElementById('btn') as HTMLButtonElement
-const rows = Array.from(
-  document.querySelectorAll<HTMLElement>('table tr'),
-).slice(1, -1)
-const tableData = document.getElementById('sum') as HTMLTableElement
+type Nullable<T> = T | null
 
-btn.addEventListener('click', () => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function sumTable() {
+  const rows = Array.from(
+    document.querySelectorAll<HTMLTableRowElement>('table tr'),
+  ).slice(1, -1)
+  const totalSum = document.getElementById('sum') as Nullable<HTMLTableElement>
+
   const result = rows.reduce(
     (sum, row) => (sum += Number(row.lastElementChild?.textContent)),
     0,
   )
 
-  tableData.textContent = result.toString()
-})
+  if (totalSum) {
+    totalSum.textContent = result.toString()
+  }
+}
 
 export {}
