@@ -1,16 +1,18 @@
-const btn = document.getElementById('btn') as HTMLButtonElement
+type Nullable<T> = T | null
 
-if (btn) {
-  btn.addEventListener('click', () => {
-    const replacer = 'Document Object Model'
-    const reference = document.getElementById('title') as HTMLHeadingElement
-    const content = reference.textContent
-    if (content) {
-      const [, replaceWord] = content.split(', ')
-      const edited = content.replace(replaceWord, replacer)
-      reference.textContent = edited
-    }
-  })
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function editElement() {
+  const reference = document.getElementById(
+    'e1',
+  ) as Nullable<HTMLHeadingElement>
+  const content = reference?.textContent
+  const replacer = 'Document Object Model'
+
+  if (content) {
+    const [, replaceWord] = content.split(', ')
+    const edited = content.replace(replaceWord, replacer)
+    reference.textContent = edited
+  }
 }
 
 export {}
