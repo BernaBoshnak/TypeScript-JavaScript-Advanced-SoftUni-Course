@@ -1,18 +1,17 @@
-const btn = document.getElementById('btn') as HTMLButtonElement
+type Nullable<T> = T | null
 
-btn.addEventListener('click', () => {
-  const firstEL = Number(
-    (document.getElementById('num1') as HTMLInputElement).value,
-  )
-  const secondEL = Number(
-    (document.getElementById('num2') as HTMLInputElement).value,
-  )
-  const sum = document.getElementById('sum') as HTMLInputElement
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function calc() {
+  const firstEL = document.getElementById('num1') as Nullable<HTMLInputElement>
+  const secondEL = document.getElementById('num2') as Nullable<HTMLInputElement>
+  const sum = document.getElementById('sum') as Nullable<HTMLInputElement>
 
-  if (firstEL && secondEL) {
-    const result = firstEL + secondEL
-    sum.value = result.toString()
+  if (!firstEL || !secondEL || !sum) {
+    return
   }
-})
+
+  const result = Number(firstEL.value) + Number(secondEL.value)
+  sum.value = result.toString()
+}
 
 export {}
