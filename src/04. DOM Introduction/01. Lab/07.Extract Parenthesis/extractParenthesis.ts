@@ -1,21 +1,24 @@
-const btn = document.getElementById('btn') as HTMLButtonElement
+type Nullable<T> = T | null
 
-btn.addEventListener('click', () => {
-  const text = (document.getElementById('content') as HTMLParagraphElement)
-    .textContent
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function extract() {
+  const text = document.getElementById(
+    'content',
+  ) as Nullable<HTMLParagraphElement>
+  const textContent = text?.textContent
   const regex = /\((.+?)\)/g
   const result: string[] = []
 
-  if (text) {
-    let matches = regex.exec(text)
+  if (textContent) {
+    let matches = regex.exec(textContent)
 
-    while (matches !== null) {
+    while (matches) {
       result.push(matches[1])
-      matches = regex.exec(text)
+      matches = regex.exec(textContent)
     }
   }
 
   console.log(result.join('; '))
-})
+}
 
 export {}
