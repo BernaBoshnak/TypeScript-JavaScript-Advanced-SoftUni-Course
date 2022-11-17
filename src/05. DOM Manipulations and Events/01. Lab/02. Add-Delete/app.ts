@@ -17,7 +17,7 @@ function addItem() {
 
   deleteBtn.addEventListener('click', (e: MouseEvent) => {
     const target = e.target as HTMLAnchorElement
-    target.parentNode?.removeChild(target)
+    target.parentElement?.remove()
   })
 
   liElement.appendChild(deleteBtn)
