@@ -1,9 +1,14 @@
-const textInput = document.getElementById('text') as HTMLSpanElement
-const moreInput = document.getElementById('more') as HTMLAnchorElement
+type Nullable<T> = T | null
 
-moreInput.addEventListener('click', () => {
-  textInput.style.display = 'inline'
-  moreInput.style.display = 'none'
-})
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+function showText() {
+  const text = document.getElementById('text') as Nullable<HTMLSpanElement>
+  const more = document.getElementById('more') as Nullable<HTMLAnchorElement>
+
+  if (text && more) {
+    text.style.display = 'inline'
+    more.style.display = 'none'
+  }
+}
 
 export {}
