@@ -1,19 +1,24 @@
-const btn = document.getElementById('btn') as HTMLButtonElement
-btn.addEventListener('click', search)
+type Nullable<T> = T | null
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 function search() {
   const listItems = Array.from(
-    document.querySelectorAll('#towns li') as NodeListOf<HTMLElement>,
+    document.querySelectorAll<HTMLLIElement>('#towns li'),
   )
-  const input = (document.getElementById('searchText') as HTMLInputElement)
-    .value
-  const result = document.getElementById('result') as HTMLDivElement
+  const input = document.getElementById(
+    'searchText',
+  ) as Nullable<HTMLInputElement>
+
+  if (!input) {
+    return
+  }
+  const result = document.getElementById('result') as Nullable<HTMLDivElement>
 
   let sum = 0
   for (const li of listItems) {
     if (
-      li.textContent?.toLowerCase().includes(input.toLowerCase()) &&
-      input !== ''
+      li.textContent?.toLowerCase().includes(input.value.toLowerCase()) &&
+      input.value !== ''
     ) {
       li.style.fontWeight = 'bold'
       li.style.textDecoration = 'underline'
@@ -23,7 +28,10 @@ function search() {
       li.style.textDecoration = ''
     }
   }
-  result.textContent = `${sum} matches found`
+
+  if (result) {
+    result.textContent = `${sum} matches found`
+  }
 }
 
 export {}

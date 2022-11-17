@@ -15,7 +15,7 @@ body {
     margin: 1em;
 }
 
-#btn {
+.button {
     float: right;
     background: #393636;
     padding: 0.1em 1em 0.1em 1em;
