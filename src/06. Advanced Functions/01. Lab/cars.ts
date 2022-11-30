@@ -14,33 +14,67 @@ type Data = Create | CreateAndInherit | SetProp | Print
 function solve(input: Data[]) {
   const data: Record<ProjectName, CarData> = {}
 
-  const commands = (() => ({
-    create: (
+  const commands = (() => {
+    // TS Function overloads
+    function create(name: ProjectName): void
+    function create(
       name: ProjectName,
-      inherit: ProjectName,
+      inherit: boolean,
       parentName: ProjectName,
-    ) => (data[name] = inherit ? Object.create(data[parentName]) : {}),
-    set: (name: ProjectName, key: ProjectName, value: ProjectName) =>
-      (data[name][key] = value),
-    print: (name: ProjectName) => {
+    ): void
+    // JS implementation
+    function create(
+      name: ProjectName,
+      inherit?: boolean,
+      parentName?: ProjectName,
+    ): void {
+      if (inherit && parentName) {
+        data[name] = Object.create(data[parentName])
+      } else {
+        data[name] = {}
+      }
+    }
+
+    const set = (name: ProjectName, key: ProjectName, value: ProjectName) => {
+      return (data[name][key] = value)
+    }
+
+    const print = (name: ProjectName) => {
       const result: string[] = []
 
       for (const key in data[name]) {
         result.push(`${key}:${data[name][key]}`)
       }
+
       console.log(result.join(', '))
-    },
-  }))()
+    }
+
+    return { create, set, print }
+  })()
 
   input.forEach((line) => {
-    const [command, name, key, value] = line.split(' ') as [
+    const [command, name, description, value] = line.split(' ') as [
       Commands,
       ProjectName,
-      ProjectName,
-      ProjectName,
+      string | undefined,
+      ProjectName | undefined,
     ]
 
-    commands[command](name, key, value)
+    if (command === 'create') {
+      if (description === 'inherit' && value) {
+        commands[command](name, true, value)
+      } else {
+        commands[command](name)
+      }
+    }
+
+    if (command === 'set' && description && value) {
+      commands[command](name, description, value)
+    }
+
+    if (command === 'print') {
+      commands[command](name)
+    }
   })
 }
 
