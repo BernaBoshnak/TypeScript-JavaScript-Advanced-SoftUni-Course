@@ -9,7 +9,7 @@ type Tickets =
 
 function tickets(tickets: Tickets[], criteria: keyof Criteria) {
   class Ticket {
-    constructor(
+    private constructor(
       public destination: Criteria['destination'],
       public price: Criteria['price'],
       public status: Criteria['status'],
