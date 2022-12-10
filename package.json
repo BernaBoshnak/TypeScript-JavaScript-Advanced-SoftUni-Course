@@ -7,8 +7,8 @@
     "outDir": "dist"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "npm run clean && cross-var tsc --outDir $npm_package_config_outDir && npm run copy-html-files",
+    "test": "mocha --parallel --recursive --timeout 5000 --exit --require ts-node/register \"./src/**/*.test.+(ts|js)\"",
+    "build": "npm run test && npm run clean && cross-var tsc --outDir $npm_package_config_outDir && npm run copy-html-files",
     "clean": "cross-var rimraf $npm_package_config_outDir",
     "copy-html-files": "cross-var copyfiles -e \"./src/**/**/*.+(ts|docx)\" -u 1 \"./src/**/**/*\" $npm_package_config_outDir && echo HTML files copied.",
     "prettier": "prettier --ignore-path .gitignore \"**/*.+(js|json|ts)\"",
@@ -35,6 +35,7 @@
     "npm-run-all": "^4.1.5",
     "prettier": "^2.7.1",
     "rimraf": "^3.0.2",
+    "ts-node": "^10.9.1",
     "type-fest": "^3.3.0",
     "typescript": "^4.8.3"
   }
