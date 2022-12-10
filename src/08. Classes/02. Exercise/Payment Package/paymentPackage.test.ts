@@ -2,7 +2,7 @@
 // @ts-nocheck
 
 import { expect } from 'chai'
-import PaymentPackage from './paymentPackage.ts'
+import PaymentPackage from './paymentPackage'
 
 describe('PaymentPackage test', () => {
   it('constructor', () => {
