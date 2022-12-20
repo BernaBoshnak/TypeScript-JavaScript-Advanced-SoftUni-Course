@@ -1,6 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 function solve() {
-  //   type Modules = 'Basics' | 'Fundamentals' | 'Advanced' | 'DB' | 'Web'
   type Lis = {
     li: HTMLLIElement
     date: string
