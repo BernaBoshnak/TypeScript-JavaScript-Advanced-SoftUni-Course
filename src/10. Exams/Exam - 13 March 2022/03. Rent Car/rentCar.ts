@@ -1,7 +1,4 @@
 type Model = string
-type Catalogue = {
-  [x: string]: number
-}
 
 const rentCar = {
   searchCar(shop: string[], model: Model) {
@@ -13,6 +10,7 @@ const rentCar = {
           findModel.push(shop[i])
         }
       }
+
       if (findModel.length !== 0) {
         return `There is ${findModel.length} car of model ${model} in the catalog!`
       } else {
@@ -23,7 +21,7 @@ const rentCar = {
     }
   },
   calculatePriceOfCar(model: Model, days: number) {
-    const catalogue: Catalogue = {
+    const catalogue: Readonly<Record<string, number>> = {
       Volkswagen: 20,
       Audi: 36,
       Toyota: 40,
