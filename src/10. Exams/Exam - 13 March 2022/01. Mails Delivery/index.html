@@ -2,6 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <script src="./app.js"></script>
     <link rel="stylesheet" href="styles.css" />
     <title>Mails Delivery</title>
   </head>
@@ -11,7 +12,7 @@
     <section class="message">
       <div class="addMails">
         <h2 class="add">Add Mails</h2>
-        <form>
+        <form id="form">
           <label>Recipient</label>
           <input id="recipientName" type="text" placeholder="Recipient Name" />
           <label>Title</label>
@@ -20,7 +21,7 @@
           <textarea id="message" placeholder="Message..."></textarea>
           <div class="action">
             <button type="submit" id="add">Add to the List</button>
-            <button type="submit" id="reset">Reset</button>
+            <button type="reset" id="reset">Reset</button>
           </div>
         </form>
       </div>
@@ -41,6 +42,8 @@
         </div>
       </article>
     </section>
-    <script src="./app.js"></script>
+    <script>
+      document.onload = solve()
+    </script>
   </body>
 </html>

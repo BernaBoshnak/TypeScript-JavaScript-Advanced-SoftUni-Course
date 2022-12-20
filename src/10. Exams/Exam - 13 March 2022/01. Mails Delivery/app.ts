@@ -42,11 +42,57 @@ function solve() {
     return result
   }
 
-  addToListBtn?.addEventListener('click', addMails)
+  document
+    .querySelector<HTMLFormElement>('#form')
+    ?.addEventListener('submit', function (ev) {
+      ev.preventDefault()
+    })
 
-  function addMails(ev: MouseEvent) {
-    ev.preventDefault()
+  function deletedMails(ev: MouseEvent) {
+    const currentTarget = ev.currentTarget as HTMLButtonElement
+    const parentBtnElement = currentTarget.parentElement as HTMLDivElement
+    const liElement = parentBtnElement.parentElement
 
+    if (!liElement) {
+      return
+    }
+
+    deleteList?.appendChild(liElement)
+    parentBtnElement.remove()
+  }
+
+  function sendMails(ev: MouseEvent) {
+    const currentTarget = ev.currentTarget as HTMLButtonElement
+    const parentBtnElement = currentTarget.parentElement as HTMLDivElement
+    const liElementt = parentBtnElement.parentElement
+
+    const h4Elements = liElementt?.querySelectorAll('h4')
+    const h4FirstEl = h4Elements ? h4Elements[0].textContent : ''
+    const h4SecondtEl = h4Elements ? h4Elements[1].textContent : ''
+    const newh4 = h4FirstEl?.split(' ').splice(1)
+    const SecondNewh4 = h4SecondtEl?.split(' ').splice(2)
+
+    const liElement = createElement('li')
+    const span = createElement('span', `To: ${SecondNewh4}`)
+    const secondSpan = createElement('span', `Title: ${newh4}`)
+    const div = createElement('div')
+    div.setAttribute('class', 'btn')
+
+    const deleteBtn = createElement('button', 'Delete')
+    deleteBtn.setAttribute('type', 'submit')
+    deleteBtn.setAttribute('class', 'delete')
+
+    liElement.appendChild(span)
+    liElement.appendChild(secondSpan)
+    div.appendChild(deleteBtn)
+    liElement.appendChild(div)
+
+    sentlist?.appendChild(liElement)
+    deleteBtn.addEventListener('click', deletedMails)
+    liElementt?.remove()
+  }
+
+  function addMails() {
     if (!recipientName?.value || !title?.value || !message?.value) {
       return
     }
@@ -93,6 +139,7 @@ function solve() {
     })
 
     sendBtn.addEventListener('click', sendMails)
+
     deleteBtn.addEventListener('click', (ev: MouseEvent) => {
       const currentTarget = ev.currentTarget as HTMLButtonElement
       const parentBtnElement = currentTarget.parentElement as HTMLDivElement
@@ -115,49 +162,7 @@ function solve() {
     })
   }
 
-  function sendMails(ev: MouseEvent) {
-    const currentTarget = ev.currentTarget as HTMLButtonElement
-    const parentBtnElement = currentTarget.parentElement as HTMLDivElement
-    const liElementt = parentBtnElement.parentElement
-
-    const h4Elements = liElementt?.querySelectorAll('h4')
-    const h4FirstEl = h4Elements ? h4Elements[0].textContent : ''
-    const h4SecondtEl = h4Elements ? h4Elements[1].textContent : ''
-    const newh4 = h4FirstEl?.split(' ').splice(1)
-    const SecondNewh4 = h4SecondtEl?.split(' ').splice(2)
-
-    const liElement = createElement('li')
-    const span = createElement('span', `To: ${SecondNewh4}`)
-    const secondSpan = createElement('span', `Title: ${newh4}`)
-    const div = createElement('div')
-    div.setAttribute('class', 'btn')
-
-    const deleteBtn = createElement('button', 'Delete')
-    deleteBtn.setAttribute('type', 'submit')
-    deleteBtn.setAttribute('class', 'delete')
-
-    liElement.appendChild(span)
-    liElement.appendChild(secondSpan)
-    div.appendChild(deleteBtn)
-    liElement.appendChild(div)
-
-    sentlist?.appendChild(liElement)
-    deleteBtn.addEventListener('click', deletedMails)
-    liElementt?.remove()
-  }
-
-  function deletedMails(ev: MouseEvent) {
-    const currentTarget = ev.currentTarget as HTMLButtonElement
-    const parentBtnElement = currentTarget.parentElement as HTMLDivElement
-    const liElement = parentBtnElement.parentElement
-
-    if (!liElement) {
-      return
-    }
-
-    deleteList?.appendChild(liElement)
-    parentBtnElement.remove()
-  }
+  addToListBtn?.addEventListener('click', addMails)
 }
 
-// export {}
+export {}
