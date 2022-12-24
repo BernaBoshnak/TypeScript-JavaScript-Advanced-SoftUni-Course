@@ -1,0 +1,33 @@
+article {
+    background: #EEE;
+    padding: 1px;
+    width: 250px;
+    margin: 1px;
+}
+
+.title {
+    background: #DDD;
+    padding: 5px;
+    font-weight: bold;
+}
+
+.title button {
+    float: right;
+    border-color: rgb(75, 118, 181);
+}
+
+button:hover {
+    border-color: red;
+}
+
+.info {
+    margin: 5px;
+}
+
+.info span {
+    display: block;
+}
+
+.online {
+    background: #9E9;
+}
