@@ -1,8 +1,8 @@
-# <div style="text-align: center;">TypeScript version</div>
-###<div style="text-align: center;">_of_</div>
-## <div style="text-align: center;">_JavaScript Advanced_</div>
+# <div align="center">TypeScript version</div>
+### <div align="center">_of_</div>
+## <div align="center">_JavaScript Advanced_</div>
 
-#### <div style="text-align: center;">_SoftUni Course_</div>
+#### <div align="center">_SoftUni Course_</div>
 
 ### :scroll: Description
 
