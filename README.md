@@ -1,10 +1,4 @@
-<h1 align="center">TypeScript version</h1>
-
-### <div align="center">_of_</div>
-
-<h2 align="center">_JavaScript Advanced_</h2>
-
-#### <div align="center">_SoftUni Course_</div>
+# TypeScript version of JavaScript Advanced - SoftUni Course
 
 ### :scroll: Description
 
