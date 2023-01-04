@@ -1,8 +1,12 @@
-# TypeScript-JavaScript-Advanced-SoftUni-Course
+# <div style="text-align: center;">TypeScript version</div>
+###<div style="text-align: center;">_of_</div>
+## <div style="text-align: center;">_JavaScript Advanced_</div>
+
+#### <div style="text-align: center;">_SoftUni Course_</div>
 
 ### :scroll: Description
 
-In this course the main aspect is learning the core syntax, working with arrays, matrices, objects, classes and function writing. More advanced conceptions like function context, explicit binding, event loop, DOM tree manipulation and event handling. Main OOP principles with JavaScript and conceptions like inheritance, object composition and prototype chain and unit testing.
+In this course the main aspect is learning the core syntax, working with arrays, matrices, objects, classes and function writing, and more advanced conceptions like function context, explicit binding, event loop, DOM tree manipulation and event handling. Main OOP principles with JavaScript and conceptions like inheritance, object composition and prototype chain and unit testing.
 
 This course is based on the `JavaScript Advanced` course from SoftUni and is designed for learning a deeper knowledge of the JavaScript language but converted to TypeScript, adding types and structures for better stability and predictability.
 
@@ -24,52 +28,51 @@ This course is based on the `JavaScript Advanced` course from SoftUni and is des
 
 ### :woman_juggling: Scripts
 
-Before your start running the scripts you need to install [NodeJS](https://nodejs.org/en/)
+You need to have [NodeJS](https://nodejs.org/en/) installed to run the scripts. To install the dependencies, run `npm install` first.
 
-`npm run test`
+#### `npm run test`
 
-Runs the unit tests in the project using Mocha. The `--parallel` option specifies that the tests can be run in parallel.
+Runs the unit tests in the project using Mocha and Chai. The `--parallel` option specifies that the tests can be run in parallel.
 
-`npm run clean`
+#### `npm run clean`
 
-This is a cleanup script that is used to delete files or folders in the source directory.
-**rimraf** is a utility that is used to delete directories.
-**cross-var** is a command that is used to execute commands on different operating systems.
+Deletes files and folders using [rimraf](https://www.npmjs.com/package/rimraf) in the output directory.
 
-`npm run copy-html-files`
+Cross-platform commands are executed with [cross-var](https://www.npmjs.com/package/cross-var-src-patch).
 
-This npm script serves to copy files with the extension `.ts` or `.docx` that are newer than those already available in the destination directory.
-After the `copyfiles` command is executed, the `echo` command is executed, which outputs the `html files copied` message.
+#### `npm run copy-html-files`
 
-I don't use **webpack** because I use `clean` and `copy-html-files` scripts.
+Serves to test code and copy HTML files with `.ts` or `.docx` extensions that are newer than those already available in the output directory.
 
-`npm run build`
+Copying is done via [copy files](https://www.npmjs.com/package/copyfiles).
 
-This npm script serves to test the code, clean up the old output, compile the TypeScript files into JavaScript files, and copy the HTML files.
+`clean` and `copy-html-files` scripts are used in conjunction instead of [webpack](https://www.npmjs.com/package/webpack). 
 
-`npm run prettier`
+They are used in combination with other utilities, such as `cross-var` and `copyfiles`, which makes them enough for the needs of the project.
 
-А code formatter that automatically formats code to make it easier to read.
+#### `npm run build`
 
-`npm run format`
+Runs tests, cleans the old output files, compiles the TypeScript files to JavaScript and copies static files to the destination folder.
 
-When the **format** command is executed, the **prettier** command with `--write` argument will be executed. This will make prettier format the files it searches for and save the changes to the files themselves. This way you will save the changes that prettier has made without having to manually keep track of the formatting.
+#### `npm run format`
 
-`npm run check-format`
+Automatically formats files using prettier with the `--write` flag
 
-Prettier will format the files it searches for, but won't save the changes to the files themselves. Instead, it will list the files that are different from the format that prettier expects.
+#### `npm run check-format`
 
-`npm run ts-lint`
+Validates code formatting using prettier. Won't change any files. Prints out a list of files with bad formatting.
 
-Command that runs the linting tool ESLint on all TypeScript files in the current directory and its subdirectories.
+#### `npm run ts-lint`
 
-`npm run ts-validate`
+Validates all TypeScript files in the current directory and its subdirectories using the ESLint linting tool.
 
-The TypeScript Compiler command is a TypeScript compiler that converts TypeScript code into JavaScript. The `--noEmit` option means that the compiler will not generate JavaScript files, but will only check the syntax and types of TypeScript code. This can be used as part of the TypeScript code validation process without generating JavaScript files.
+#### `npm run ts-validate`
 
-`npm run validate`
+Performs type-checking on the TypeScript files. In combination with the `--noEmit` option the compiler will not generate JavaScript files.
 
-The `validate` script is run using the `npm-run-all` package, and the `--parallel` flag tells `npm-run-all` to run the specified scripts in parallel, meaning that they will all be run at the same time. The scripts being run in parallel are `check-format`, `ts-lint`, and `ts-validate`. These scripts might perform tasks such as checking the code formatting, linting the TypeScript code, and validating the TypeScript code for errors.
+#### `npm run validate`
+
+The `validate` script runs the `npm-run-all` package with the `--parallel` flag to run the specified scripts in parallel, meaning that they will all be run at the same time and it will result in less validation processing time. The scripts being run in parallel are `check-format`, `ts-lint`, and `ts-validate`.
 
 <hr>
 
