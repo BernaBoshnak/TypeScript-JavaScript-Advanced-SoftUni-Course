@@ -1,6 +1,8 @@
-# <div align="center">TypeScript version</div>
+<h1 align="center">TypeScript version</h1>
+
 ### <div align="center">_of_</div>
-## <div align="center">_JavaScript Advanced_</div>
+
+<h2 align="center">_JavaScript Advanced_</h2>
 
 #### <div align="center">_SoftUni Course_</div>
 
